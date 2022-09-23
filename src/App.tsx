@@ -87,7 +87,7 @@ function App() {
 export default App
 
 
-const Block = ({color, index, setItems, items, pos, setPos, center}: {center: MutableRefObject<HTMLDivElement | null>,color: string, index: number, setItems: any, items: {id: number, color: string}[], pos: number[], setPos: any}) => {
+const Block = ({color, index, setItems, items, pos, setPos, center}: {center: any,color: string, index: number, setItems: any, items: {id: number, color: string}[], pos: number[], setPos: any}) => {
 
         
 
