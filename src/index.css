@@ -1,60 +1,77 @@
 .App {
- display: flex;
- justify-content: center;
- align-items: center;
- height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: aquamarine;
 }
 
 .x {
-    width: 900px;
-    height: 900px;
+    width: 800px;
+    height: 800px;
     clip-path: circle(50% at 50% 50%);
-    background-color: aqua;
+    background-color: white;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
-
-
-
-.y {
+.x:before {
+    content: '';
     position: absolute;
-    width: 150px;
-    height: 290px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* pointer-events: none; */
-
-    
-    
-    top: 50%;
-    
-    /* left: 10%; */
-    
-    clip-path: polygon(0 1%, 100% 0, 50% 100%, 50% 100%);
-    /* transform:  rotate(-45deg); */
-    transform-origin: bottom;
-    transition: all 300ms ease-in-out;
-}
-
-.z {
-    width: 200px;
-    height: 200px;
-    background-color: cornflowerblue;
+    width: 509px;
+    height: 509px;
+    background-color: white;
     clip-path: circle(50% at 50% 50%);
     z-index: 13;
 }
 
+.y {
+    position: absolute;
+    width: 218px;
+    height: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    clip-path: polygon(0 1%, 100% 0, 50% 100%, 50% 100%);
+    transform-origin: bottom;
+    transition: transform 500ms ease;
+}
+
+.y:hover {
+    cursor: pointer;
+}
+
+.z {
+    width: 500px;
+    height: 500px;
+    background-color: cornflowerblue;
+    clip-path: circle(50% at 50% 50%);
+    z-index: 13;
+    position: relative;
+    z-index: 14;
+    object-fit: cover;
+}
+
+.f {
+    position: relative;
+    background-color: red;
+    width: 100%;
+    height: 100%;
+}
+
 .c {
     transform-origin: center;
-    background-color: lightsalmon;
-    width: 50px;
-    height: 50px;
+    /* background-color: lightsalmon; */
+    width: 225px;
+    height: 225px;
+    object-fit: cover;
     display: block;
     margin: auto;
-    transition: all 200ms ease-in-out;
+    position: absolute;
+    top: -6%;
+    left: -6%;
+    transition: transform 500ms ease;
 }
