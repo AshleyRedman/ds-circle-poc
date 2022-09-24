@@ -177,7 +177,7 @@ const Block = ({
         setPos(gg);
     };
 
-    const reorderArr = (i, arr) => {
+    const reorderArr = (i: number, arr: number[]) => {
         return [...arr.slice(i), ...arr.slice(0, i)];
     };
 
