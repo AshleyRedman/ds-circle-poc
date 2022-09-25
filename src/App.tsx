@@ -1,94 +1,285 @@
-import { useEffect, useRef, useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
+
+type item = {
+    id: number;
+    color: string;
+    url: string;
+    buttonText: string;
+    buttonTextColor: string;
+    buttonColor: string;
+    externalLink: boolean;
+    text: string;
+    textColor: string;
+};
+
+const seed = [
+    {
+        id: 0,
+        color: '#3737',
+        url: 'https://visualmodo.com/wp-content/uploads/2018/07/Images-Compression-vs-Site-Loading-Speed.png',
+        buttonText: 'Lorem',
+        buttonTextColor: 'black',
+        buttonColor: 'yellow',
+        externalLink: true,
+        text: 'Lorem ipsum',
+        textColor: 'white'
+    },
+    {
+        id: 1,
+        color: 'green',
+        url: 'http://webmediainfotech.com/wp-content/uploads/2019/10/Image-Optimization.jpg',
+        buttonText: 'Lorem',
+        buttonTextColor: 'black',
+        buttonColor: 'yellow',
+        externalLink: true,
+        text: 'Lorem ipsum',
+        textColor: 'white'
+    },
+    {
+        id: 2,
+        color: 'purple',
+        url: 'https://www.softwaretestinghelp.com/wp-content/qa/uploads/2016/04/Website-Link-Verification-Testing-Tools.jpg',
+        buttonText: 'Lorem',
+        buttonTextColor: 'black',
+        buttonColor: 'yellow',
+        externalLink: true,
+        text: 'Lorem ipsum',
+        textColor: 'white'
+    },
+    {
+        id: 3,
+        color: 'orange',
+        url: 'https://miro.medium.com/max/1400/0*i1XbVjul86E_CSyf.jpg',
+        buttonText: 'Lorem',
+        buttonTextColor: 'black',
+        buttonColor: 'yellow',
+        externalLink: true,
+        text: 'Lorem ipsum',
+        textColor: 'white'
+    },
+    {
+        id: 4,
+        color: 'black',
+        url: 'https://hatrabbits.com/wp-content/uploads/2018/10/risky-assumptions.jpg',
+        buttonText: 'Lorem',
+        buttonTextColor: 'black',
+        buttonColor: 'yellow',
+        externalLink: true,
+        text: 'Lorem ipsum',
+        textColor: 'white'
+    },
+    {
+        id: 5,
+        color: 'blue',
+        url: 'https://www.cambridgeenglish.org/Images/tye-business-button-2019.jpg',
+        buttonText: 'Lorem',
+        buttonTextColor: 'black',
+        buttonColor: 'yellow',
+        externalLink: true,
+        text: 'Lorem ipsum',
+        textColor: 'white'
+    },
+    {
+        id: 6,
+        color: 'pink',
+        url: '/1.jpeg',
+        buttonText: 'Lorem',
+        buttonTextColor: 'black',
+        buttonColor: 'yellow',
+        externalLink: true,
+        text: 'Lorem ipsum',
+        textColor: 'white'
+    },
+    {
+        id: 7,
+        color: 'yellow',
+        url: '/2.jpeg',
+        buttonText: 'Lorem',
+        buttonTextColor: 'black',
+        buttonColor: 'yellow',
+        externalLink: true,
+        text: 'Lorem ipsum',
+        textColor: 'white'
+    },
+    {
+        id: 8,
+        color: 'navy',
+        url: '/3.jpeg',
+        buttonText: 'Lorem',
+        buttonTextColor: 'black',
+        buttonColor: 'yellow',
+        externalLink: true,
+        text: 'Lorem ipsum',
+        textColor: 'white'
+    },
+    {
+        id: 9,
+        color: '#d2d2d2d2',
+        url: 'https://visualmodo.com/wp-content/uploads/2018/07/Images-Compression-vs-Site-Loading-Speed.png',
+        buttonText: 'Lorem',
+        buttonTextColor: 'black',
+        buttonColor: 'yellow',
+        externalLink: true,
+        text: 'Lorem ipsum',
+        textColor: 'white'
+    },
+    {
+        id: 10,
+        color: '#e3c3',
+        url: 'https://visualmodo.com/wp-content/uploads/2018/07/Images-Compression-vs-Site-Loading-Speed.png',
+        buttonText: 'Lorem',
+        buttonTextColor: 'black',
+        buttonColor: 'yellow',
+        externalLink: true,
+        text: 'Lorem ipsum',
+        textColor: 'white'
+    },
+    {
+        id: 11,
+        color: 'rgb(25,215,200)',
+        url: 'https://visualmodo.com/wp-content/uploads/2018/07/Images-Compression-vs-Site-Loading-Speed.png',
+        buttonText: 'Lorem',
+        buttonTextColor: 'black',
+        buttonColor: 'yellow',
+        externalLink: true,
+        text: 'Lorem ipsum',
+        textColor: 'white'
+    }
+];
+
+const positions = [45, 75, 105, 135, 165, 195, 225, 255, 285, 315, 345, 375];
 
 function App() {
-    const [pos, setPos] = useState([
-        45, 75, 105, 135, 165, 195, 225, 255, 285, 315, 345, 375
-    ]);
+    const [items, setItems] = useState<item[]>(seed);
+    const [pos, setPos] = useState<number[]>(positions); // more like angle
+    const [jumpToPos, setJumpToPos] = useState(2);
+    const [active, setActive] = useState(items[2]);
 
-    const [items, setItems] = useState([
-        {
-            id: 0,
-            color: '#3737',
-            url: 'https://visualmodo.com/wp-content/uploads/2018/07/Images-Compression-vs-Site-Loading-Speed.png'
-        },
-        {
-            id: 1,
-            color: 'green',
-            url: 'http://webmediainfotech.com/wp-content/uploads/2019/10/Image-Optimization.jpg'
-        },
-        {
-            id: 2,
-            color: 'purple',
-            url: 'https://www.softwaretestinghelp.com/wp-content/qa/uploads/2016/04/Website-Link-Verification-Testing-Tools.jpg'
-        },
-        {
-            id: 3,
-            color: 'orange',
-            url: 'https://miro.medium.com/max/1400/0*i1XbVjul86E_CSyf.jpg'
-        },
-        {
-            id: 4,
-            color: 'black',
-            url: 'https://hatrabbits.com/wp-content/uploads/2018/10/risky-assumptions.jpg'
-        },
-        {
-            id: 5,
-            color: 'blue',
-            url: 'https://www.cambridgeenglish.org/Images/tye-business-button-2019.jpg'
-        },
-        {
-            id: 6,
-            color: 'pink',
-            url: '/1.jpeg'
-        },
-        {
-            id: 7,
-            color: 'yellow',
-            url: '/2.jpeg'
-        },
-        {
-            id: 8,
-            color: 'navy',
-            url: '/3.jpeg'
-        },
-        {
-            id: 9,
-            color: '#d2d2d2d2',
-            url: 'https://visualmodo.com/wp-content/uploads/2018/07/Images-Compression-vs-Site-Loading-Speed.png'
-        },
-        {
-            id: 10,
-            color: '#e3c3',
-            url: 'https://visualmodo.com/wp-content/uploads/2018/07/Images-Compression-vs-Site-Loading-Speed.png'
-        },
-        {
-            id: 11,
-            color: 'rgb(25,215,200)',
-            url: 'https://visualmodo.com/wp-content/uploads/2018/07/Images-Compression-vs-Site-Loading-Speed.png'
-        }
-    ]);
+    const [top, setTop] = useState(0);
+    const [left, setLeft] = useState(0);
+    const [isCenter, setIsCenter] = useState(true);
+    const [width, _] = useState(800);
+    const [feature, setFeature] = useState(500);
+    const featureBorder = Number(feature) + 9;
 
-    const center = useRef<any>(null);
+    const move = (item: item) => {
+        setActive(item); // sets the center item
 
-    useEffect(() => {
-        center.current.src = items[2].url;
-    }, []);
+        const gg = pos.map((p) => {
+            let c = p + 30;
+            if (c === 360) c = 30;
+
+            return c;
+        });
+
+        setPos(gg);
+    };
+
+    // const reorderArr = (i: number, arr: item[]) => {
+    //     return [...arr.slice(i), ...arr.slice(0, i)];
+    // };
 
     return (
         <div className="App">
-            <div className="x">
-                <img ref={center} className="z" />
+            <div className="controls">
+                <span>Jump to position (0 - 12)</span>
+                <input
+                    type="number"
+                    min={0}
+                    max={11}
+                    value={jumpToPos}
+                    onChange={(event) => {
+                        setJumpToPos(Number(event.target.value));
+                    }}
+                />
+                <hr />
+                <span>Adjust position</span>
+                <input
+                    type="checkbox"
+                    onChange={() => {
+                        setIsCenter((state) => !state);
+                    }}
+                />
+                <span>Top: {top}</span>
+                <input
+                    type="number"
+                    value={top}
+                    onChange={(event) => setTop(Number(event.target.value))}
+                />
+                <span>Left: {left}</span>
+                <input
+                    type="number"
+                    value={left}
+                    onChange={(event) => setLeft(Number(event.target.value))}
+                />
+                {/* <span>Width/height: {width}</span>
+                <input
+                    type="number"
+                    value={width}
+                    onChange={(event) => setWidth(Number(event.target.value))}
+                /> */}
+                <hr />
+                <span>Feature width/height: {feature}</span>
+                <input
+                    type="number"
+                    value={feature}
+                    onChange={(event) => setFeature(Number(event.target.value))}
+                />
+            </div>
+            <div
+                className="x"
+                style={{
+                    position: isCenter ? 'relative' : 'absolute',
+                    top: isCenter ? '' : top + 'px',
+                    left: isCenter ? '' : left + 'px',
+                    width: width + 'px',
+                    height: width + 'px'
+                }}
+            >
+                <div
+                    className="zbefore"
+                    style={{
+                        width: `${featureBorder}px`,
+                        height: `${featureBorder}px`
+                    }}
+                >
+                    <img
+                        src={active.url}
+                        className="z"
+                        style={{
+                            width: `${feature}px`,
+                            height: `${feature}px`
+                        }}
+                    />
+                    <div className="zcontent">
+                        <span
+                            style={{
+                                color: active.textColor
+                            }}
+                        >
+                            {active.text}
+                        </span>
+                        <a
+                            href={active.url} // add link url
+                            className="button"
+                            target={active.externalLink ? '_blank' : '_self'}
+                            style={{
+                                backgroundColor: active.color,
+                                color: active.textColor
+                            }}
+                        >
+                            {active.text}
+                        </a>
+                    </div>
+                </div>
                 {items.map((item, index) => (
                     <Block
-                        center={center}
-                        url={item.url}
+                        key={item.id}
+                        item={item}
                         pos={pos}
                         setPos={setPos}
-                        setItems={setItems}
-                        items={items}
                         index={index}
-                        key={item.id}
-                        color={item.color}
+                        move={move}
                     />
                 ))}
             </div>
@@ -99,108 +290,35 @@ function App() {
 export default App;
 
 const Block = ({
-    color,
-    url,
+    item,
     index,
-    setItems,
-    items,
     pos,
-    setPos,
-    center
+    move
 }: {
-    center: any;
-    url: string;
-    color: string;
+    item: item;
     index: number;
-    setItems: any;
-    items: { id: number; color: string; url: string }[];
     pos: number[];
-    setPos: any;
-}) => {
-    const move = (event: any) => {
-        center.current.src = url;
-
-        const item = pos[index];
-
-        // console.log({ item, index });
-
-        const dupe = pos;
-
-        // 2
-        let amount = 0;
-
-        if (index > 2) {
-            amount = items.length - index;
-
-            console.log({ amount });
-
-            if (amount === 9) {
-                amount = -1;
-            } else if (amount === 10) {
-                amount = -2;
-            } else if (amount === 11) {
-                amount = -3;
-            } else if (amount === 12) {
-                amount = -3;
-            } else if (amount === 8) {
-                amount = 0;
-            } else if (amount === 7) {
-                amount = 1;
-            } else if (amount === 6) {
-                amount = 2;
-            } else if (amount === 5) {
-                amount = 3;
-            } else if (amount === 4) {
-                amount = 4;
-            } else if (amount === 3) {
-                amount = 2;
-            } else if (amount === 2) {
-                amount = 1;
-            }
-
-            console.log({ index, amount });
-        } else {
-            amount = items.length + index;
-        }
-
-        const reorderedArr = reorderArr(amount, dupe);
-
-        // reorderedArr.forEach((item, index) => (item = ));
-
-        const gg = dupe.map((p) => {
-            let c = p + 30;
-            if (c === 360) c = 30;
-
-            return c;
-        });
-
-        setPos(gg);
-    };
-
-    const reorderArr = (i: number, arr: number[]) => {
-        return [...arr.slice(i), ...arr.slice(0, i)];
-    };
-
-    return (
-        <>
-            <button
-                onClick={move}
-                className="y"
-                style={{
-                    zIndex: index + 1,
-                    transform: `translateY(-100%) rotate(-${pos[index]}deg)`
-                }}
-            >
-                <div className="f">
-                    <img
-                        className="c"
-                        src={url}
-                        style={{
-                            transform: `rotate(${pos[index]}deg)`
-                        }}
-                    />
-                </div>
-            </button>
-        </>
-    );
-};
+    setPos: Dispatch<SetStateAction<number[]>>;
+    move: (item: item) => void;
+}) => (
+    <>
+        <button
+            onClick={() => move(item)}
+            className="y"
+            style={{
+                zIndex: index + 1,
+                transform: `translateY(-100%) rotate(-${pos[index]}deg)`
+            }}
+        >
+            <div className="f">
+                <img
+                    className="c"
+                    src={item.url}
+                    style={{
+                        transform: `rotate(${pos[index]}deg)`
+                    }}
+                />
+            </div>
+        </button>
+    </>
+);
