@@ -16,7 +16,7 @@ const seed = [
     {
         id: 0,
         color: '#3737',
-        url: 'https://visualmodo.com/wp-content/uploads/2018/07/Images-Compression-vs-Site-Loading-Speed.png',
+        url: '1.jpg',
         buttonText: 'Lorem',
         buttonTextColor: 'black',
         buttonColor: 'yellow',
@@ -27,7 +27,7 @@ const seed = [
     {
         id: 1,
         color: 'green',
-        url: 'http://webmediainfotech.com/wp-content/uploads/2019/10/Image-Optimization.jpg',
+        url: '2.jpg',
         buttonText: 'Lorem',
         buttonTextColor: 'black',
         buttonColor: 'yellow',
@@ -38,7 +38,7 @@ const seed = [
     {
         id: 2,
         color: 'purple',
-        url: 'https://www.softwaretestinghelp.com/wp-content/qa/uploads/2016/04/Website-Link-Verification-Testing-Tools.jpg',
+        url: '3.jpg',
         buttonText: 'Lorem',
         buttonTextColor: 'black',
         buttonColor: 'yellow',
@@ -49,7 +49,7 @@ const seed = [
     {
         id: 3,
         color: 'orange',
-        url: 'https://miro.medium.com/max/1400/0*i1XbVjul86E_CSyf.jpg',
+        url: '4.jpg',
         buttonText: 'Lorem',
         buttonTextColor: 'black',
         buttonColor: 'yellow',
@@ -60,7 +60,7 @@ const seed = [
     {
         id: 4,
         color: 'black',
-        url: 'https://hatrabbits.com/wp-content/uploads/2018/10/risky-assumptions.jpg',
+        url: '5.jpg',
         buttonText: 'Lorem',
         buttonTextColor: 'black',
         buttonColor: 'yellow',
@@ -71,7 +71,7 @@ const seed = [
     {
         id: 5,
         color: 'blue',
-        url: 'https://www.cambridgeenglish.org/Images/tye-business-button-2019.jpg',
+        url: '6.jpg',
         buttonText: 'Lorem',
         buttonTextColor: 'black',
         buttonColor: 'yellow',
@@ -82,7 +82,7 @@ const seed = [
     {
         id: 6,
         color: 'pink',
-        url: '/1.jpeg',
+        url: '7.jpg',
         buttonText: 'Lorem',
         buttonTextColor: 'black',
         buttonColor: 'yellow',
@@ -93,7 +93,7 @@ const seed = [
     {
         id: 7,
         color: 'yellow',
-        url: '/2.jpeg',
+        url: '8.jpg',
         buttonText: 'Lorem',
         buttonTextColor: 'black',
         buttonColor: 'yellow',
@@ -104,7 +104,7 @@ const seed = [
     {
         id: 8,
         color: 'navy',
-        url: '/3.jpeg',
+        url: '9.jpg',
         buttonText: 'Lorem',
         buttonTextColor: 'black',
         buttonColor: 'yellow',
@@ -115,7 +115,7 @@ const seed = [
     {
         id: 9,
         color: '#d2d2d2d2',
-        url: 'https://visualmodo.com/wp-content/uploads/2018/07/Images-Compression-vs-Site-Loading-Speed.png',
+        url: '10.jpg',
         buttonText: 'Lorem',
         buttonTextColor: 'black',
         buttonColor: 'yellow',
@@ -126,7 +126,7 @@ const seed = [
     {
         id: 10,
         color: '#e3c3',
-        url: 'https://visualmodo.com/wp-content/uploads/2018/07/Images-Compression-vs-Site-Loading-Speed.png',
+        url: '11.jpg',
         buttonText: 'Lorem',
         buttonTextColor: 'black',
         buttonColor: 'yellow',
@@ -137,7 +137,7 @@ const seed = [
     {
         id: 11,
         color: 'rgb(25,215,200)',
-        url: 'https://visualmodo.com/wp-content/uploads/2018/07/Images-Compression-vs-Site-Loading-Speed.png',
+        url: '12.jpg',
         buttonText: 'Lorem',
         buttonTextColor: 'black',
         buttonColor: 'yellow',
