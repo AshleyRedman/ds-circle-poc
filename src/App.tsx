@@ -227,61 +227,71 @@ function App() {
                 />
             </div>
             <div
-                className="x"
+                className="top"
                 style={{
                     position: isCenter ? 'relative' : 'absolute',
                     top: isCenter ? '' : top + 'px',
                     left: isCenter ? '' : left + 'px',
-                    width: width + 'px',
-                    height: width + 'px'
+                    width: Number(width + 9) + 'px',
+                    height: Number(width + 9) + 'px'
                 }}
             >
                 <div
-                    className="zbefore"
+                    className="x"
                     style={{
-                        width: `${featureBorder}px`,
-                        height: `${featureBorder}px`
+                        width: width + 'px',
+                        height: width + 'px'
                     }}
                 >
-                    <img
-                        src={active.url}
-                        className="z"
+                    <div
+                        className="zbefore"
                         style={{
-                            width: `${feature}px`,
-                            height: `${feature}px`
+                            width: `${featureBorder}px`,
+                            height: `${featureBorder}px`
                         }}
-                    />
-                    <div className="zcontent">
-                        <span
+                    >
+                        <img
+                            src={active.url}
+                            className="z"
                             style={{
-                                color: active.textColor
+                                width: `${feature}px`,
+                                height: `${feature}px`
                             }}
-                        >
-                            {active.text}
-                        </span>
-                        <a
-                            href={active.url} // add link url
-                            className="button"
-                            target={active.externalLink ? '_blank' : '_self'}
-                            style={{
-                                backgroundColor: active.color,
-                                color: active.textColor
-                            }}
-                        >
-                            {active.text}
-                        </a>
+                        />
+                        <div className="zcontent">
+                            <span
+                                style={{
+                                    color: active.textColor
+                                }}
+                            >
+                                {active.text}
+                            </span>
+                            <a
+                                href={active.url} // add link url
+                                className="button"
+                                target={
+                                    active.externalLink ? '_blank' : '_self'
+                                }
+                                style={{
+                                    backgroundColor: active.color,
+                                    color: active.textColor
+                                }}
+                            >
+                                {active.text}
+                            </a>
+                        </div>
                     </div>
+                    {items.map((item, index) => (
+                        <Block
+                            key={item.id}
+                            item={item}
+                            pos={pos}
+                            setPos={setPos}
+                            index={index}
+                            move={move}
+                        />
+                    ))}
                 </div>
-                {items.map((item, index) => (
-                    <Block
-                        key={item.id}
-                        item={item}
-                        pos={pos}
-                        setPos={setPos}
-                        index={index}
-                        move={move}
-                    />
-                ))}
             </div>
         </div>
     );
